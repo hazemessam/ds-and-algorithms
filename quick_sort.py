@@ -1,5 +1,5 @@
 def qsort(arr: list) -> list:
-    if len(arr) == 0 or len(arr) == 1: return arr
+    if len(arr) < 2: return arr
     if len(arr) == 2:
         if arr[0] > arr[1]:
             temp = arr[0]
@@ -22,3 +22,4 @@ print(qsort([1, 6, 3, 4, 5]))
 print(qsort([]))
 print(qsort([1]))
 print(qsort([5, 7, 1, 0]))
+print(qsort([1, 2, 3, 5, 2]))
