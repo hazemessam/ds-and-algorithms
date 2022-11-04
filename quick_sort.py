@@ -2,27 +2,21 @@ from random import randint
 
 
 def qsort(arr: list) -> list:
-    if len(arr) < 2: return arr
-    if len(arr) == 2:
-        if arr[0] > arr[1]:
-            temp = arr[0]
-            arr[0] = arr[1]
-            arr[1] = temp
+    if len(arr) <= 2:
+        if len(arr) == 2 and arr[0] > arr[1]:
+            arr[0], arr[1] = arr[1], arr[0]
         return arr
-    
+
     pivot_idx = randint(0, len(arr)-1)
     pivot = arr[pivot_idx]
     left_sub_arr = []
     right_sub_arr = []
-    
-    for el in arr[:pivot_idx]:
-        if el <= pivot: left_sub_arr.append(el)
-        else: right_sub_arr.append(el)
-        
-    for el in arr[pivot_idx+1:]:
-        if el <= pivot: left_sub_arr.append(el)
-        else: right_sub_arr.append(el)
-        
+
+    for idx in range(len(arr)):
+        if idx == pivot_idx: continue
+        if arr[idx] <= pivot: left_sub_arr.append(arr[idx])
+        else: right_sub_arr.append(arr[idx])
+
     return qsort(left_sub_arr) + [pivot] + qsort(right_sub_arr)
 
 
